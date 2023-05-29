@@ -3,13 +3,13 @@ export type Quizz = {
     questions: { 
         id: number; 
         question: string; 
+        img: string;
         options: { 
             id: number; 
             name: string; 
             alias: string; 
         }[]; }[]; 
         results: { 
-            A: string; 
-            B: string; 
+            [key: string]: string;  
         }; 
     }

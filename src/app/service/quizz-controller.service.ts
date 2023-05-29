@@ -1,20 +1,65 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
 import { Quizz } from 'src/types/quizz.type';
-import quizz_questions from '../../assets/data/quizz_questions.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizzControllerService {
   
-  private quizz:Quizz = quizz_questions;
+  private quizz:Quizz = {
+    title: '',
+    questions: [],
+    results: {
+      A: '',
+      B: ''
+    }
+  };
 
   private currentId: number = 1;
 
+  private inLoading = true;
+
   private responses: any[] = [];
 
-  constructor(){
+  constructor(private http: HttpClient){
+    this.http.get<Quizz>('../assets/quizz_questions.json').subscribe({
+      next: (r: Quizz) => {
+        this.quizz = r;
+        this.reset();
+      },
+      complete: () => this.inLoading = false
+    })
+  }
+
+  isClear(id: number): boolean{
+    return this.responses[id-1] === null;
+  }
+
+  reset(): void{
     this.responses = this.quizz.questions.map(e => null);
+  }
+
+  get Result(): string[]{
+    const Count = Object.keys(this.quizz.results)
+    .map(
+      e => 
+      //conta as resposta de A e B
+      this.responses.reduce(
+        (a,ee) => 
+        (e === ee?.alias)?a+1:a,0
+      )
+    );
+    return Count[0] > Count[1]?[this.quizz.results['A'], 'A']:[this.quizz.results['B'], 'B'];
+  }
+
+  get Title(): string{
+    return this.quizz.title;
+  }
+
+  get TotalQuestions(): number{
+    return this.quizz.questions.length;
   }
 
   set ID(id: number) {
@@ -25,6 +70,10 @@ export class QuizzControllerService {
   
   get ID() : number {
     return this.currentId;
+  }
+
+  get InLoading(): boolean{
+    return this.inLoading;
   }
   
   get Questions(): any{

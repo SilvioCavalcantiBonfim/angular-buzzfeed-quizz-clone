@@ -1,0 +1,39 @@
+<div class="p-4 mb-4" *ngIf="!quizzControllerService.InLoading">
+    <h4>{{quizzControllerService.Questions.question}}</h4>
+    <div
+      class="w-100 my-3 thumbnail"
+      [style.background-image]="'url(' + quizzControllerService.Questions.img + ')'"
+    ></div>
+    <div class="d-flex flex-column justify-content-center gap-3">
+      <button 
+        class="rounded border w-100 p-3 d-flex scale" 
+        *ngFor="let option of quizzControllerService.Questions.options"
+        (click)="selectResponse(option.id)"
+        [ngClass]="{
+          'bg-primary bg-gradient text-white border-primary': quizzControllerService.isOptionSelected(option.id),
+          'bg-transparent border-dark': !quizzControllerService.isOptionSelected(option.id),
+        }"
+      >
+        <span class="weight-700 h5 m-0 text-truncate">{{option.name}}</span>
+      </button>
+    </div>
+    <div class="d-flex align-items-center justify-content-center mt-3 gap-3">
+        <a 
+          class="text-decoration-none weight-700"
+          [attr.clickable]="(i+1) !== quizzControllerService.ID?true:null"
+          [ngClass]="{'bt-icon-selected-primary': (i+1) === quizzControllerService.ID, 'bt-icon-secondary': (i+1) !== quizzControllerService.ID}"
+          (click)="navegationQuestion(i+1)"
+          *ngFor="let page of Pages; index as i"
+        >
+            <span [ngClass]="quizzControllerService.isClear(i+1) && (i+1) !== quizzControllerService.ID?'text-secondary':''">{{i+1}}</span>
+        </a>
+        <a
+          class="text-decoration-none bt-icon-selected-success slide-in-bck-center"
+          clickable
+          *ngIf="quizzControllerService.isFinish()"
+          routerLink="/quizz/finish"
+        >
+          <span class="material-symbols-outlined">done</span>
+        </a>
+    </div>
+  </div>

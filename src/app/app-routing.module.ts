@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'quizz', loadChildren: () => import('./quizz-question/quizz-question.module').then(m => m.QuizzQuestionModule) },
-  {path: '**', redirectTo: 'quizz/1'}
+  { path: 'quizz', loadChildren: () => import('./question/question.module').then(m => m.QuestionModule)},
+  {path: '**', redirectTo: 'quizz/question/1'}
 ];
 
 @NgModule({
