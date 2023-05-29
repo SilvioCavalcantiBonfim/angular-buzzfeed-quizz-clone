@@ -32,29 +32,35 @@
 
 .quizz_options{
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   margin: auto;
-  margin-bottom: 20px;
+  gap: 1rem;
 }
 
 .btn-option{
-  background-color: transparent;
   border-radius: 8px;
-  border: 1px solid #18ab29;
-  width: 50%;
-  display: inline-block;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--background) ;
+  width: 100%;
+  display: flex;
   cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 17px;
-  padding: 16px 31px;
+  padding: 1.25rem;
+  transition: transform .2s ease-in-out;
+}
+.btn-option span{
+  max-width: 100%;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627;
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 1.25rem;
+  font-size: 1.063rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn-option:hover{
-  background-color: #5cbf2a;
+  transform: scale(1.02);
 }
 
 .btn-option:active{
@@ -72,4 +78,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.quizz__container__quest{
+  box-shadow: 0px 3px 8px -3px rgba(0, 0, 0, 0.2);
+  background-color: var(--background);
+  padding: 1.25rem;
+  border-radius: 8px;
 }
