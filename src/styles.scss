@@ -136,9 +136,15 @@ $weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
   background-color: #EE3322;
   color: white;
 }
+.nav a{
+  color: #EE3322;
+}
 @include media-breakpoint-up(md) {
   .nav{
     color: #EE3322;
     background-color: white;
+  }
+  a{
+    color: #EE3322;
   }
 }
