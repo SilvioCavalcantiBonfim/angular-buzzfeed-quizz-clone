@@ -1,0 +1,19 @@
+{
+    "project": "Clone do BuzzFeed",
+    "technologies": [
+        {
+            "name": "Angular",
+            "iconUrl": "https://cdn.simpleicons.org/angular"
+        },
+        {
+            "name": "Bootstrap",
+            "iconUrl": "https://cdn.simpleicons.org/bootstrap"
+        }
+    ],
+    "description": "O projeto Clone do BuzzFeed foi desenvolvido durante o bootcamp Potência Tech Angular Developer - Powered by iFood, oferecido pela Dio (Digital Innovation One). Este projeto tem como objetivo replicar a funcionalidade principal do popular site BuzzFeed, utilizando a estrutura do framework Angular.",
+    "deploy": [{
+        "url": "https://silviocavalcantibonfim.github.io/angular-buzzfeed-quizz-clone/",
+        "urlIcon":"https://cdn.simpleicons.org/githubpages"
+}],
+    "thumbnailUrl": "https://raw.githubusercontent.com/SilvioCavalcantiBonfim/angular-buzzfeed-quizz-clone/main/thumb.png"
+}
